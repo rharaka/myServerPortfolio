@@ -1,0 +1,43 @@
+<h1 class="mt-4">My Inbox</h1>
+<a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+<a href="/contacts" class="btn btn-secondary">My Contacts</a>
+<a href="/logout" class="btn btn-primary">Logout</a>
+
+<div class="card card-body mt-3">
+    <h3 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Messages</h3>
+    <table class="mt-3 table table-hover" border="1" cellpadding="7">
+        <tr class="table-active">
+            <th scope="row">From</th>
+            <th scope="row">Subject</th>
+            <th scope="row">Message</th>
+            <th scope="row">Actions</th>
+        </tr>
+        
+        <% for (let index = 0; index < contacts.length; index++) { %>
+            <tr onClick="console.log(`<%= contacts[index].message %>`)" class="tremail">
+                <td <% if(contacts[index].asread == 0) { %> style="font-weight: bold;" <% } %>>
+                    <%= contacts[index].email %>
+                </td>
+                <td <% if(contacts[index].asread == 0) { %> style="font-weight: bold;" <% } %>>
+                    <%= contacts[index].subject %>
+                </td>
+                <td <% if(contacts[index].asread == 0) { %> style="font-weight: bold;" <% } %>>
+                    <%= contacts[index].message %>
+                </td>
+                <td>
+                    <a href="/mar?id=<%= contacts[index].id %>&asr=<%= contacts[index].asread %>">
+                        <% if(contacts[index].asread == 0) { %> 
+                            Mark as read 
+                        <% } %>
+                        <% if(contacts[index].asread == 1) { %> 
+                            Mark as unread 
+                        <% } %>
+                    </a>
+                    /
+                    <a href="/delete?id=<%= contacts[index].id %>">Delete</a>
+                </td>
+            </tr>   
+        <% } %>
+                
+    </table>
+</div>

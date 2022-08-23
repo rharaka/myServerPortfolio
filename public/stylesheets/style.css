@@ -1,0 +1,46 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+/* a {
+  color: #00B7FF;
+} */
+
+.tremail {
+  cursor: pointer;
+}
+
+.contacts-forms {
+  flex: 1;
+}
+
+.list-contacts {
+  flex: 1;
+  width: 100%;
+}
+
+#add-ppl {
+  display: none;
+}
+
+#close, #close1 {
+  float: right;
+}
+
+.action form {
+  float: left;
+}
+
+.action a {
+  float: left;
+  margin: 12px;
+}
+
+/* .add-ppl {
+  float: left;
+}
+
+.upd-ppl {
+  float: right;
+} */

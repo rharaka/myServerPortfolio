@@ -1,0 +1,140 @@
+<h1 class="mt-4">My people</h1>
+
+<a href="/dashboard" class="btn btn-secondary">Dashboard</a>
+<a href="/inbox" class="btn btn-secondary">My Inbox</a>
+<a href="/logout" class="btn btn-primary">Logout</a>
+
+<div class="contacts-forms">
+    <div class="card card-body mt-3 add-ppl" id="add-ppl">
+        <div>
+            <button id="close">Close</button>
+            <h3 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>New Contact</h3>
+        </div>
+        <% include ./partials/messages %>
+        <form action="/people" method="POST">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    class="form-control"
+                    placeholder="Enter Name"
+                />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter Email"
+                />
+            </div>
+            <div class="form-group">
+                <label for="other">Other information</label>
+                <input
+                    type="text"
+                    id="other"
+                    name="other"
+                    class="form-control"
+                    placeholder="Enter other information"
+                />
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Add</button>
+        </form>
+    </div>
+    <% if(typeof person !== 'undefined') { %>
+        <div class="card card-body mt-3 upd-ppl" id="upd-ppl">
+            <div>
+                <button id="close1">Close</button>
+                <h3 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Edit Contact</h3>
+            </div>
+            <% include ./partials/messages %>
+            <form action="/updPpl" method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                        type="text"
+                        id="name"
+                        name="name"
+                        class="form-control"
+                        placeholder="Enter Name"
+                        value="<%= person.name %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        class="form-control"
+                        placeholder="Enter Email"
+                        value="<%= person.email %>"
+                    />
+                </div>
+                <div class="form-group">
+                    <label for="other">Other information</label>
+                    <input
+                        type="text"
+                        id="other"
+                        name="other"
+                        class="form-control"
+                        placeholder="Enter other information"
+                        value="<%= person.other %>"
+                    />
+                </div>
+                <input type="hidden" value="<%= person.id %>" name="pplId" id="pplId" />
+                <button type="submit" class="btn btn-primary btn-block">Update</button>
+            </form>
+        </div>
+    <% } %>
+</div>
+
+<div class="card card-body mt-3 list-contacts">
+    <h3 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>Contacts</h3>
+    <a href="#" id="new" class="btn btn-primary">New</a>
+    <table class="mt-3 table table-hover" border="1" cellpadding="7">
+
+        <tr class="table-active">
+            <th scope="row">Name</th>
+            <th scope="row">Email</th>
+            <th scope="row">Actions</th>
+        </tr>
+        
+        <% if (people != null) { %>
+            
+            <% for (let index = 0; index < people.length; index++) { %>
+                <tr class="tremail">
+                    <td>
+                        <%= people[index].name %>
+                    </td>
+                    <td>
+                        <%= people[index].email %>
+                    </td>
+                    <td class="action">
+                        <form method="post" action="/editPpl">
+                            <input type="hidden" value="<%= people[index].id %>" name="pplId" id="pplId" />
+                            <button class="btn btn-secondary" type="submit">Edit</button>
+                        </form>
+                        <a href="/deletePpl?id=<%= people[index].id %>">Delete</a>
+                    </td>
+                </tr>   
+            <% } %>
+
+        <% } 
+        
+        else { %>
+
+            <tr class="tremail">
+                <td>
+                    No Contact found!
+                </td>
+            </tr> 
+
+        <% } %>
+
+    </table>
+</div>

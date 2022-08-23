@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/public/stylesheets/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <title>INDEX</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <h1>INDEX</h1>
+    <% if(typeof logged !== 'undefined' && logged === true) { %>
+      <p>
+        Welcome <%= user.name %>, 
+        <a href="http://localhost:3001/inbox">My Inbox</a>
+      </p>
+      <% if(typeof success !== 'undefined') { 
+      %>
+        <p class="notification success"><%= success %></p>
+      <% 
+      }
+    }
+    else { %>
+      <% if(messages.error) { %>
+        <p class="notification message"><%= messages.error %></p>
+      <% } %>
+      <% if(typeof error !== 'undefined') { %>
+        <p class="notification error"><%= error %></p>
+      <% }
+    } %>
+    <script>
+      var message = $('.notification');
+      if ( message.length ) {
+          setTimeout( function() {
+              message.fadeOut( 'slow' );
+          }, 5000 );
+      }
+    </script>
+  </body>
+</html>
