@@ -262,4 +262,7 @@ app.post('/login', (req, res, next) => {
 
 // })
 
-app.listen(3001)
+app.listen(process.env.PORT || 3001, () => {
+    var port = server.address().port;
+    console.log(`Server running on ${port}`);
+})
