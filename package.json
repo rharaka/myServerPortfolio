@@ -7,9 +7,11 @@
     "devStart": "nodemon index.js"
   },
   "dependencies": {
+    "ansi-styles": "^6.1.0",
     "bcrypt": "^5.0.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
+    "chalk": "^5.0.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -19,12 +21,15 @@
     "express-ejs-layouts": "^2.5.1",
     "express-flash": "^0.0.2",
     "express-session": "^1.17.3",
+    "heroku": "^7.62.0",
+    "hostname-patcher": "^1.1.0",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.19",
     "passport": "^0.6.0",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "serve": "^14.0.1"
   },
   "main": "index.js",
   "author": "",
