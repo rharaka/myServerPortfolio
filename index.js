@@ -31,7 +31,7 @@ app.use(expressLayouts)
 app.set("view engine", "ejs")
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: 'secret',
     resave: true, 
     saveUninitialized: true
 }))
